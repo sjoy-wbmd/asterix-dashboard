@@ -110,10 +110,11 @@
   /* ---------- SPRINT PRIORITIES ---------- */
   .sprint-grid {
     display: grid;
-    grid-template-columns: 1.3fr 1fr;
+    grid-template-columns: 1fr;
     gap: 22px;
     align-items: start;
   }
+  .sprint-grid .current-sprint-card { max-width: 640px; }
   .current-sprint-card {
     background: var(--white);
     border: 1px solid var(--border);
@@ -162,34 +163,14 @@
   .priority-body strong { display: block; font-size: 14.5px; color: var(--navy); }
   .priority-body span { font-size: 13px; color: var(--muted); }
 
-  .upcoming-strip {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-  .upcoming-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px 18px;
-  }
-  .upcoming-card.is-current { border-color: var(--gold); background: var(--gold-light); }
-  .upcoming-card .u-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 6px;
-  }
-  .upcoming-card .u-head h4 { font-size: 15px; }
-  .upcoming-card .u-dates { font-size: 11.5px; color: var(--muted); }
-  .upcoming-card ul { margin: 0; padding-left: 18px; font-size: 12.5px; color: var(--ink); }
-  .upcoming-card li { padding: 2px 0; }
-
   /* ---------- WHERE THINGS STAND (BOARD) ---------- */
   .board {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
+  }
+  .board.board-5 {
+    grid-template-columns: repeat(5, 1fr);
   }
   .board-col {
     background: var(--white);
@@ -219,45 +200,6 @@
   }
   .board-card:last-child { margin-bottom: 0; }
   .board-empty { font-size: 12.5px; color: var(--muted); font-style: italic; }
-
-  /* ---------- WHO'S WORKING ON WHAT ---------- */
-  .owners-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-  .owner-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px 18px;
-  }
-  .owner-card h4 {
-    font-size: 14.5px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 4px;
-  }
-  .owner-card h4::before {
-    content: "";
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--gold);
-    display: inline-block;
-  }
-  .owner-card ul { list-style: none; margin: 0; padding: 0; }
-  .owner-card li {
-    padding: 7px 0;
-    border-top: 1px solid var(--border);
-    font-size: 13px;
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-    align-items: center;
-  }
-  .owner-card li:first-child { border-top: none; }
-  .owner-card li .wtitle { flex: 1; }
 
   /* ---------- STATUS / HEALTH PILLS ---------- */
   .status-pill {
@@ -333,14 +275,17 @@
     font-size: 12px;
   }
 
+  @media (max-width: 1100px) {
+    .board.board-5 { grid-template-columns: repeat(3, 1fr); }
+  }
   @media (max-width: 900px) {
     .sprint-grid { grid-template-columns: 1fr; }
     .board { grid-template-columns: repeat(2, 1fr); }
-    .owners-grid { grid-template-columns: repeat(2, 1fr); }
+    .board.board-5 { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 560px) {
     .board { grid-template-columns: 1fr; }
-    .owners-grid { grid-template-columns: 1fr; }
+    .board.board-5 { grid-template-columns: 1fr; }
     .wrap { padding: 0 16px; }
   }
 </style>
@@ -354,9 +299,9 @@
       <div class="sub">A live view of sprint priorities, workstream health, and ownership across the Asterix SDLC &amp; Agent Platform initiative.</div>
       <div class="hero-meta">
         <div class="pill-meta">Quarter: <strong>Q3 2026</strong></div>
-        <div class="pill-meta">Current Sprint: <strong>Sprint 15 (Aug 17 &ndash; Aug 30)</strong></div>
+        <div class="pill-meta">Current Sprint: <strong>Sprint 18</strong></div>
         <div class="pill-meta">Workstreams Tracked: <strong>28</strong></div>
-        <div class="pill-meta">Last Updated: <strong>August 18, 2026</strong></div>
+        <div class="pill-meta">Last Updated: <strong>August 28, 2026</strong></div>
       </div>
     </div>
   </div>
@@ -371,79 +316,50 @@
       <div class="sprint-grid">
         <div class="current-sprint-card">
           <div class="tag">This Sprint</div>
-          <h3>Sprint 15</h3>
-          <div class="dates">Aug 17 &ndash; Aug 30, 2026</div>
+          <h3>Sprint 18</h3>
+          <div class="dates">Development in progress</div>
 
           <div class="priority-row rank-1">
             <div class="priority-rank">1</div>
-            <div class="priority-body">
-              <strong>Autonomous Coding Agent v1 pilot launch</strong>
-              <span>Kickoff demo 8/20 &mdash; first live milestone for the initiative</span>
-            </div>
-          </div>
-          <div class="priority-row">
-            <div class="priority-rank">2</div>
             <div class="priority-body">
               <strong>MCP Hub Phase II intake flow</strong>
               <span>Unblocks downstream connector requests piling up</span>
             </div>
           </div>
           <div class="priority-row">
+            <div class="priority-rank">2</div>
+            <div class="priority-body">
+              <strong>Community Marketplace Enhancements and adoption &ndash; Phase 1</strong>
+              <span>Needed for pilot go/no-go decision next quarter</span>
+            </div>
+          </div>
+          <div class="priority-row">
             <div class="priority-rank">3</div>
             <div class="priority-body">
-              <strong>GitTrace adoption tracking</strong>
-              <span>Needed for pilot go/no-go decision next quarter</span>
+              <strong>Rebranding of SDLC Dashboards &amp; Correlation &amp; Trend Metrics Phase 2</strong>
+              <span>Refreshing dashboard branding and trend reporting</span>
             </div>
           </div>
           <div class="priority-row">
             <div class="priority-rank">4</div>
             <div class="priority-body">
-              <strong>Spec Driven ADLC Workflow discovery</strong>
-              <span>Shapes scope before broader team commits time</span>
+              <strong>Git Trace &ndash; Implement Pilot Feedback</strong>
+              <span>Incorporating feedback from pilot adoption</span>
             </div>
           </div>
           <div class="priority-row">
             <div class="priority-rank">5</div>
             <div class="priority-body">
-              <strong>IB Wiki Alpha UAT feedback</strong>
-              <span>Close to release &mdash; feedback window is short</span>
+              <strong>Expert Coding Hours &ndash; Exclude Countries / Prep for Release</strong>
+              <span>Compliance approval in progress ahead of release</span>
             </div>
           </div>
-        </div>
-
-        <div class="upcoming-strip">
-          <div class="upcoming-card is-current">
-            <div class="u-head">
-              <h4>Sprint 15</h4>
-              <div class="u-dates">Aug 17 &ndash; Aug 30</div>
+          <div class="priority-row">
+            <div class="priority-rank">6</div>
+            <div class="priority-body">
+              <strong>IB Wiki Migrations for Asterix</strong>
+              <span>Shapes scope before broader team commits time</span>
             </div>
-            <ul>
-              <li>ACA pilot kickoff support (8/20)</li>
-              <li>GitTrace adoption monitoring</li>
-              <li>IB Wiki Alpha UAT feedback triage</li>
-            </ul>
-          </div>
-          <div class="upcoming-card">
-            <div class="u-head">
-              <h4>Sprint 16</h4>
-              <div class="u-dates">Aug 31 &ndash; Sep 13</div>
-            </div>
-            <ul>
-              <li>MCP Hub Phase II build begins</li>
-              <li>Community Marketplace refinement continues</li>
-              <li>Token &amp; Context Optimization discovery wraps</li>
-            </ul>
-          </div>
-          <div class="upcoming-card">
-            <div class="u-head">
-              <h4>Sprint 17</h4>
-              <div class="u-dates">Sep 14 &ndash; Sep 27</div>
-            </div>
-            <ul>
-              <li>Spec Driven ADLC discovery close-out</li>
-              <li>SDLC Dashboard rebrand discovery close-out</li>
-              <li>Gemini Agent Ops POC review</li>
-            </ul>
           </div>
         </div>
       </div>
@@ -457,164 +373,43 @@
         <h2>Where Things Stand</h2>
         <div class="section-note">Source: Sprint Priorities &amp; Near-Term Plan sheet</div>
       </div>
-      <div class="board">
+      <div class="board board-5">
+        <div class="board-col">
+          <div class="board-col-head">Development</div>
+          <div class="board-col-body">
+            <div class="board-card">MCP Hub Phase II intake flow</div>
+            <div class="board-card">Community Marketplace Enhancements &ndash; Phase 1</div>
+            <div class="board-card">Rebranding of SDLC Dashboards Phase 2</div>
+            <div class="board-card">Git Trace &ndash; Implement Pilot Feedback</div>
+            <div class="board-card">Expert Coding Hours &ndash; Prep for Release</div>
+            <div class="board-card">IB Wiki Migrations for Asterix</div>
+          </div>
+        </div>
         <div class="board-col">
           <div class="board-col-head">Discovery</div>
           <div class="board-col-body">
-            <div class="board-card">Spec Driven ADLC Workflow</div>
             <div class="board-card">Token &amp; Context Optimization Tools</div>
-            <div class="board-card">Rebranding of SDLC Dashboards &amp; Correlation/Trend Metrics</div>
-            <div class="board-card">Gemini Agent Ops POC</div>
           </div>
         </div>
         <div class="board-col">
           <div class="board-col-head">Product Refinement</div>
           <div class="board-col-body">
-            <div class="board-card">Community Marketplace Enhancements</div>
-            <div class="board-card">IB Wiki Migrations for Alpha + Asterix Website</div>
+            <div class="board-card">Spec Driven ADLC Workflow discovery</div>
           </div>
         </div>
         <div class="board-col">
           <div class="board-col-head">In Pilot</div>
           <div class="board-col-body">
-            <div class="board-empty">Nothing reported in this sprint&rsquo;s sheet</div>
+            <div class="board-card">Autonomous Coding Agent v1</div>
+            <div class="board-card">Git Trace</div>
           </div>
         </div>
         <div class="board-col">
           <div class="board-col-head">Ready for Deployment</div>
           <div class="board-col-body">
-            <div class="board-empty">Nothing reported in this sprint&rsquo;s sheet</div>
+            <div class="board-card">MCP Hub Phase II intake flow</div>
+            <div class="board-card">Expert Coding Hours &ndash; Prep for Release (Compliance Approval)</div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHO'S WORKING ON WHAT -->
-  <section>
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Who&rsquo;s Working On What</h2>
-        <div class="section-note">Source: Airtable &middot; Workstreams (Q3 2026)</div>
-      </div>
-      <div class="owners-grid">
-        <div class="owner-card">
-          <h4>Pradeep Singh Jaroliya</h4>
-          <ul>
-            <li><span class="wtitle">Autonomous Coding Agent v1 - Pilot</span><span class="status-pill">Ready for Deployment</span></li>
-            <li><span class="wtitle">Autonomous Coding Agent v1 - Full Rollout</span><span class="status-pill">Ready for Deployment</span></li>
-            <li><span class="wtitle">Autonomous Coding Agent v2 - Development</span><span class="status-pill">On Hold</span></li>
-            <li><span class="wtitle">MCP HUB - Phase II</span><span class="status-pill">In Progress</span></li>
-          </ul>
-        </div>
-        <div class="owner-card">
-          <h4>Himanshu Bhoir</h4>
-          <ul>
-            <li><span class="wtitle">Product Ideation Tool</span><span class="status-pill">On Hold</span></li>
-            <li><span class="wtitle">Story Quality Analysis (BAU)</span><span class="status-pill">Maintenance</span></li>
-            <li><span class="wtitle">Jira and Github Integration - Phase 1</span><span class="status-pill">In Progress</span></li>
-            <li><span class="wtitle">Agent Ops (66 Degrees)</span><span class="status-pill">On Hold</span></li>
-            <li><span class="wtitle">Rebranding of SDLC Dashboards Phase 2</span><span class="status-pill">Discovery</span></li>
-          </ul>
-        </div>
-        <div class="owner-card">
-          <h4>Jake Patrick Pastoria</h4>
-          <ul>
-            <li><span class="wtitle">SMP Enhancements</span><span class="status-pill">Completed</span></li>
-            <li><span class="wtitle">Story Quality Analysis (BAU)</span><span class="status-pill">Maintenance</span></li>
-            <li><span class="wtitle">GDPR Compliance for Metrics Dashboard</span><span class="status-pill">On Hold</span></li>
-            <li><span class="wtitle">Gemini Agent Ops POC</span><span class="status-pill">Discovery</span></li>
-            <li><span class="wtitle">Expert Coding Hours</span><span class="status-pill">In Progress</span></li>
-          </ul>
-        </div>
-        <div class="owner-card">
-          <h4>Ankit Chhetri</h4>
-          <ul>
-            <li><span class="wtitle">Git Trace - Tool Agnostic Metric adoption</span><span class="status-pill">In Progress</span></li>
-            <li><span class="wtitle">Token &amp; Context Optimization Tools</span><span class="status-pill">Discovery</span></li>
-            <li><span class="wtitle">ADK - Context Hub</span><span class="status-pill">On Hold</span></li>
-            <li><span class="wtitle">Rebranding of SDLC Dashboards Phase 2</span><span class="status-pill">Discovery</span></li>
-          </ul>
-        </div>
-        <div class="owner-card">
-          <h4>Varunkumar Desai</h4>
-          <ul>
-            <li><span class="wtitle">AI Agents in QA - v1</span><span class="status-pill">On Hold</span></li>
-            <li><span class="wtitle">Spec driven ADLC Workflow</span><span class="status-pill">Discovery</span></li>
-            <li><span class="wtitle">IB Wiki Migrations for Alpha</span><span class="status-pill">Refinement</span></li>
-            <li><span class="wtitle">Rebranding of SDLC Dashboards Phase 2</span><span class="status-pill">Discovery</span></li>
-          </ul>
-        </div>
-        <div class="owner-card">
-          <h4>Seth Michael Reis</h4>
-          <ul>
-            <li><span class="wtitle">IB Wiki MVP Release</span><span class="status-pill">Planned</span></li>
-            <li><span class="wtitle">IB Wiki Alpha</span><span class="status-pill">In UAT</span></li>
-            <li><span class="wtitle">IB Wiki Migrations for Alpha</span><span class="status-pill">Refinement</span></li>
-          </ul>
-        </div>
-        <div class="owner-card">
-          <h4>Noban Tahir</h4>
-          <ul>
-            <li><span class="wtitle">Code Reviewer Enhancements -v2</span><span class="status-pill">Maintenance</span></li>
-            <li><span class="wtitle">IB Wiki MVP Release</span><span class="status-pill">Planned</span></li>
-            <li><span class="wtitle">IB Wiki Alpha</span><span class="status-pill">In UAT</span></li>
-          </ul>
-        </div>
-        <div class="owner-card">
-          <h4>Minkai Yang</h4>
-          <ul>
-            <li><span class="wtitle">Code Reviewer Enhancements -v2</span><span class="status-pill">Maintenance</span></li>
-            <li><span class="wtitle">Autonomous Coding Agent v2 - Development</span><span class="status-pill">On Hold</span></li>
-            <li><span class="wtitle">Expert Coding Hours</span><span class="status-pill">In Progress</span></li>
-          </ul>
-        </div>
-        <div class="owner-card">
-          <h4>Modupe Akanni</h4>
-          <ul>
-            <li><span class="wtitle">Community Marketplace Enhancements</span><span class="status-pill">Refinement</span></li>
-            <li><span class="wtitle">Git Trace - Tool Agnostic Metric adoption</span><span class="status-pill">In Progress</span></li>
-            <li><span class="wtitle">Rebranding of SDLC Dashboards Phase 2</span><span class="status-pill">Discovery</span></li>
-          </ul>
-        </div>
-        <div class="owner-card">
-          <h4>Pranali Kadam</h4>
-          <ul>
-            <li><span class="wtitle">Community Marketplace Enhancements</span><span class="status-pill">Refinement</span></li>
-            <li><span class="wtitle">Spec driven ADLC Workflow</span><span class="status-pill">Discovery</span></li>
-          </ul>
-        </div>
-        <div class="owner-card">
-          <h4>Harsh Tripathi</h4>
-          <ul>
-            <li><span class="wtitle">Product Ideation Tool</span><span class="status-pill">On Hold</span></li>
-            <li><span class="wtitle">Token &amp; Context Optimization Tools</span><span class="status-pill">Discovery</span></li>
-          </ul>
-        </div>
-        <div class="owner-card">
-          <h4>Genevieve Faye Will</h4>
-          <ul>
-            <li><span class="wtitle">EDU Disclosures Tool</span><span class="status-pill">Completed</span></li>
-            <li><span class="wtitle">GDPR Compliance for Metrics Dashboard</span><span class="status-pill">On Hold</span></li>
-          </ul>
-        </div>
-        <div class="owner-card">
-          <h4>Sangeetha Joy</h4>
-          <ul>
-            <li><span class="wtitle">Training &amp; upskill platform</span><span class="status-pill">In Progress</span></li>
-          </ul>
-        </div>
-        <div class="owner-card">
-          <h4>Denis Khoo</h4>
-          <ul>
-            <li><span class="wtitle">Token &amp; Context Optimization Tools</span><span class="status-pill">Discovery</span></li>
-          </ul>
-        </div>
-        <div class="owner-card">
-          <h4>Ashley Lazarus</h4>
-          <ul>
-            <li><span class="wtitle">Agent Ops (66 Degrees)</span><span class="status-pill">On Hold</span></li>
-          </ul>
         </div>
       </div>
     </div>
@@ -633,34 +428,34 @@
             <tr><th>Workstream</th><th>Status</th><th>Owner(s)</th><th>Health</th></tr>
           </thead>
           <tbody>
-            <tr><td class="wname">Community Marketplace Enhancements and adoption</td><td><span class="status-pill">Refinement</span></td><td>Pranali Kadam, Modupe Akanni</td><td><span class="health-dot health-none">Not reported</span></td></tr>
+            <tr><td class="wname">Community Marketplace Enhancements and adoption &ndash; Phase 1</td><td><span class="status-pill">In Progress</span></td><td>Pranali Kadam, Modupe Akanni</td><td><span class="health-dot health-none">Not reported</span></td></tr>
             <tr><td class="wname">AI Agents in QA - v1</td><td><span class="status-pill">On Hold</span></td><td>Varunkumar Desai</td><td><span class="health-dot health-on-track">On Track</span></td></tr>
-            <tr><td class="wname">Spec driven ADLC Workflow</td><td><span class="status-pill">Discovery</span></td><td>Pranali Kadam, Varunkumar Desai</td><td><span class="health-dot health-none">Not reported</span></td></tr>
+            <tr><td class="wname">Spec driven ADLC Workflow</td><td><span class="status-pill">Refinement</span></td><td>Pranali Kadam, Varunkumar Desai</td><td><span class="health-dot health-none">Not reported</span></td></tr>
             <tr><td class="wname">Code Reviewer Enhancements -v2</td><td><span class="status-pill">Maintenance</span></td><td>Minkai Yang, Noban Tahir</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">Autonomous Coding Agent v1 - Pilot</td><td><span class="status-pill">Ready for Deployment</span></td><td>Pradeep Singh Jaroliya</td><td><span class="health-dot health-on-track">On Track</span></td></tr>
+            <tr><td class="wname">Autonomous Coding Agent v1 - Pilot</td><td><span class="status-pill">In Progress</span></td><td>Pradeep Singh Jaroliya</td><td><span class="health-dot health-on-track">On Track</span></td></tr>
             <tr><td class="wname">Git Trace - Tool Agnostic Metric adoption</td><td><span class="status-pill">In Progress</span></td><td>Ankit Chhetri, Modupe Akanni</td><td><span class="health-dot health-none">Not reported</span></td></tr>
             <tr><td class="wname">IB Wiki MVP Release</td><td><span class="status-pill">Planned</span></td><td>Noban Tahir, Seth Michael Reis</td><td><span class="health-dot health-none">Not reported</span></td></tr>
             <tr><td class="wname">SMP Enhancements</td><td><span class="status-pill">Completed</span></td><td>Jake Patrick Pastoria</td><td><span class="health-dot health-none">Not reported</span></td></tr>
             <tr><td class="wname">Product Ideation Tool</td><td><span class="status-pill">On Hold</span></td><td>Harsh Tripathi, Himanshu Bhoir</td><td><span class="health-dot health-none">Not reported</span></td></tr>
             <tr><td class="wname">EDU Disclosures Tool</td><td><span class="status-pill">Completed</span></td><td>Genevieve Faye Will</td><td><span class="health-dot health-on-track">On Track</span></td></tr>
-            <tr><td class="wname">Training &amp; upskill platform - Strategy, approach &amp; Implementation</td><td><span class="status-pill">In Progress</span></td><td>Sangeetha Joy</td><td><span class="health-dot health-on-track">On Track</span></td></tr>
-            <tr><td class="wname">IB Wiki Alpha</td><td><span class="status-pill">In UAT</span></td><td>Noban Tahir, Seth Michael Reis</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">IB Wiki Migrations for Alpha &ndash; Intranet requirement for AI COE (Asterix use cases) + Asterix Website</td><td><span class="status-pill">Refinement</span></td><td>Seth Michael Reis, Varunkumar Desai</td><td><span class="health-dot health-none">Not reported</span></td></tr>
+            <tr><td class="wname">Training &amp; upskill platform - Strategy, approach &amp; Implementation</td><td><span class="status-pill">On Hold</span></td><td>&mdash;</td><td><span class="health-dot health-on-track">On Track</span></td></tr>
+            <tr><td class="wname">IB Wiki Beta</td><td><span class="status-pill">In Progress</span></td><td>Noban Tahir, Seth Michael Reis</td><td><span class="health-dot health-none">Not reported</span></td></tr>
+            <tr><td class="wname">IB Wiki Migrations for Alpha &ndash; Intranet requirement for AI COE (Asterix use cases) + Asterix Website</td><td><span class="status-pill">In UAT</span></td><td>Seth Michael Reis, Varunkumar Desai</td><td><span class="health-dot health-none">Not reported</span></td></tr>
             <tr><td class="wname">Token &amp; Context Optimization Tools</td><td><span class="status-pill">Discovery</span></td><td>Denis Khoo, Ankit Chhetri, Harsh Tripathi</td><td><span class="health-dot health-none">Not reported</span></td></tr>
             <tr><td class="wname">Story Quality Analysis (BAU)</td><td><span class="status-pill">Maintenance</span></td><td>Himanshu Bhoir, Jake Patrick Pastoria</td><td><span class="health-dot health-none">Not reported</span></td></tr>
             <tr><td class="wname">ADK - Short term memory</td><td><span class="status-pill">On Hold</span></td><td>&mdash;</td><td><span class="health-dot health-none">Not reported</span></td></tr>
             <tr><td class="wname">GDPR Compliance for Metrics Dashboard</td><td><span class="status-pill">On Hold</span></td><td>Jake Patrick Pastoria, Genevieve Faye Will</td><td><span class="health-dot health-none">Not reported</span></td></tr>
             <tr><td class="wname">Autonomous Coding Agent v2 - Development</td><td><span class="status-pill">On Hold</span></td><td>Pradeep Singh Jaroliya, Minkai Yang</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">Autonomous Coding Agent v1 - Full Rollout</td><td><span class="status-pill">Ready for Deployment</span></td><td>Pradeep Singh Jaroliya</td><td><span class="health-dot health-none">Not reported</span></td></tr>
+            <tr><td class="wname">Autonomous Coding Agent v1 - Full Rollout</td><td><span class="status-pill">Proposed</span></td><td>Pradeep Singh Jaroliya</td><td><span class="health-dot health-none">Not reported</span></td></tr>
             <tr><td class="wname">ADK - Context Hub</td><td><span class="status-pill">On Hold</span></td><td>Ankit Chhetri</td><td><span class="health-dot health-off-track">Off Track</span></td></tr>
-            <tr><td class="wname">Gemini Agent Ops POC</td><td><span class="status-pill">Discovery</span></td><td>Jake Patrick Pastoria</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">Jira and Github Integration (Support Ignite) - Phase 1</td><td><span class="status-pill">In Progress</span></td><td>Himanshu Bhoir</td><td><span class="health-dot health-on-track">On Track</span></td></tr>
+            <tr><td class="wname">Gemini Agent Ops POC</td><td><span class="status-pill">In Progress</span></td><td>Jake Patrick Pastoria, Pradeep Singh Jaroliya</td><td><span class="health-dot health-none">Not reported</span></td></tr>
+            <tr><td class="wname">Jira and Github Integration (Support Ignite) - Phase 1</td><td><span class="status-pill">In QA</span></td><td>Himanshu Bhoir</td><td><span class="health-dot health-on-track">On Track</span></td></tr>
             <tr><td class="wname">Autonomous Coding Agent v2 - Pilot</td><td><span class="status-pill">On Hold</span></td><td>&mdash;</td><td><span class="health-dot health-none">Not reported</span></td></tr>
             <tr><td class="wname">Autonomous Coding Agent v2 - Full Rollout</td><td><span class="status-pill">On Hold</span></td><td>&mdash;</td><td><span class="health-dot health-none">Not reported</span></td></tr>
             <tr><td class="wname">Agent Ops (66 Degrees)</td><td><span class="status-pill">On Hold</span></td><td>Himanshu Bhoir, Ashley Lazarus</td><td><span class="health-dot health-none">Not reported</span></td></tr>
             <tr><td class="wname">Expert Coding Hours</td><td><span class="status-pill">In Progress</span></td><td>Minkai Yang, Jake Patrick Pastoria</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">MCP HUB - Phase II (Intake &amp; Implementation)</td><td><span class="status-pill">In Progress</span></td><td>Pradeep Singh Jaroliya</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">Rebranding of SDLC Dashboards &amp; Correlation &amp; Trend Metrics Phase 2</td><td><span class="status-pill">Discovery</span></td><td>Himanshu Bhoir, Modupe Akanni, Varunkumar Desai, Ankit Chhetri</td><td><span class="health-dot health-on-track">On Track</span></td></tr>
+            <tr><td class="wname">MCP HUB - Phase II (Intake &amp; Implementation)</td><td><span class="status-pill">Ready for Deployment</span></td><td>Pradeep Singh Jaroliya</td><td><span class="health-dot health-none">Not reported</span></td></tr>
+            <tr><td class="wname">Rebranding of SDLC Dashboards &amp; Correlation &amp; Trend Metrics Phase 2</td><td><span class="status-pill">Ready for Work</span></td><td>Himanshu Bhoir, Modupe Akanni, Varunkumar Desai, Ankit Chhetri</td><td><span class="health-dot health-on-track">On Track</span></td></tr>
           </tbody>
         </table>
       </div>
