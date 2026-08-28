@@ -201,7 +201,7 @@
   .board-card:last-child { margin-bottom: 0; }
   .board-empty { font-size: 12.5px; color: var(--muted); font-style: italic; }
 
-  /* ---------- STATUS / HEALTH PILLS ---------- */
+  /* ---------- STATUS PILLS ---------- */
   .status-pill {
     display: inline-block;
     font-size: 11px;
@@ -212,29 +212,18 @@
     color: var(--navy);
     white-space: nowrap;
   }
-  .health-dot {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 11.5px;
-    font-weight: 700;
-    white-space: nowrap;
-  }
-  .health-dot::before {
-    content: "";
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--muted);
-    display: inline-block;
-  }
-  .health-on-track { color: var(--green); }
-  .health-on-track::before { background: var(--green); }
-  .health-at-risk { color: var(--amber); }
-  .health-at-risk::before { background: var(--amber); }
-  .health-off-track { color: var(--red); }
-  .health-off-track::before { background: var(--red); }
-  .health-none { color: var(--muted); }
-  .health-none::before { background: #C7CFDA; }
+  .status-progress { background: #FBF0DC; color: #A8710C; }
+  .status-onhold { background: #EEF1F5; color: #5B6B80; }
+  .status-refinement { background: #DCF1EE; color: #1F7A72; }
+  .status-maintenance { background: #FBE7D6; color: #B0570E; }
+  .status-planned { background: #E3ECFA; color: #2A5C99; }
+  .status-proposed { background: #E9E5F5; color: #6B4FA0; }
+  .status-completed { background: #E6F4EB; color: #2E7D4F; }
+  .status-uat { background: #DEF3F7; color: #1A7F94; }
+  .status-discovery { background: #EFE4F7; color: #7A3FA0; }
+  .status-qa { background: #FBEAEA; color: #B23A3A; }
+  .status-ready-deploy { background: #EFE1F6; color: #7A3FA0; }
+  .status-ready-work { background: #DCF1EE; color: #1F7A72; }
 
   /* ---------- FULL TABLE ---------- */
   .table-wrap {
@@ -322,40 +311,33 @@
           <div class="priority-row rank-1">
             <div class="priority-rank">1</div>
             <div class="priority-body">
-              <strong>MCP Hub Phase II intake flow</strong>
-              <span>Unblocks downstream connector requests piling up</span>
-            </div>
-          </div>
-          <div class="priority-row">
-            <div class="priority-rank">2</div>
-            <div class="priority-body">
               <strong>Community Marketplace Enhancements and adoption &ndash; Phase 1</strong>
               <span>Needed for pilot go/no-go decision next quarter</span>
             </div>
           </div>
           <div class="priority-row">
-            <div class="priority-rank">3</div>
+            <div class="priority-rank">2</div>
             <div class="priority-body">
               <strong>Rebranding of SDLC Dashboards &amp; Correlation &amp; Trend Metrics Phase 2</strong>
               <span>Refreshing dashboard branding and trend reporting</span>
             </div>
           </div>
           <div class="priority-row">
-            <div class="priority-rank">4</div>
+            <div class="priority-rank">3</div>
             <div class="priority-body">
               <strong>Git Trace &ndash; Implement Pilot Feedback</strong>
               <span>Incorporating feedback from pilot adoption</span>
             </div>
           </div>
           <div class="priority-row">
-            <div class="priority-rank">5</div>
+            <div class="priority-rank">4</div>
             <div class="priority-body">
               <strong>Expert Coding Hours &ndash; Exclude Countries / Prep for Release</strong>
               <span>Compliance approval in progress ahead of release</span>
             </div>
           </div>
           <div class="priority-row">
-            <div class="priority-rank">6</div>
+            <div class="priority-rank">5</div>
             <div class="priority-body">
               <strong>IB Wiki Migrations for Asterix</strong>
               <span>Shapes scope before broader team commits time</span>
@@ -377,7 +359,6 @@
         <div class="board-col">
           <div class="board-col-head">Development</div>
           <div class="board-col-body">
-            <div class="board-card">MCP Hub Phase II intake flow</div>
             <div class="board-card">Community Marketplace Enhancements &ndash; Phase 1</div>
             <div class="board-card">Rebranding of SDLC Dashboards Phase 2</div>
             <div class="board-card">Git Trace &ndash; Implement Pilot Feedback</div>
@@ -425,37 +406,37 @@
       <div class="table-wrap">
         <table>
           <thead>
-            <tr><th>Workstream</th><th>Status</th><th>Owner(s)</th><th>Health</th></tr>
+            <tr><th>Workstream</th><th>Status</th><th>Owner(s)</th></tr>
           </thead>
           <tbody>
-            <tr><td class="wname">Community Marketplace Enhancements and adoption &ndash; Phase 1</td><td><span class="status-pill">In Progress</span></td><td>Pranali Kadam, Modupe Akanni</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">AI Agents in QA - v1</td><td><span class="status-pill">On Hold</span></td><td>Varunkumar Desai</td><td><span class="health-dot health-on-track">On Track</span></td></tr>
-            <tr><td class="wname">Spec driven ADLC Workflow</td><td><span class="status-pill">Refinement</span></td><td>Pranali Kadam, Varunkumar Desai</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">Code Reviewer Enhancements -v2</td><td><span class="status-pill">Maintenance</span></td><td>Minkai Yang, Noban Tahir</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">Autonomous Coding Agent v1 - Pilot</td><td><span class="status-pill">In Progress</span></td><td>Pradeep Singh Jaroliya</td><td><span class="health-dot health-on-track">On Track</span></td></tr>
-            <tr><td class="wname">Git Trace - Tool Agnostic Metric adoption</td><td><span class="status-pill">In Progress</span></td><td>Ankit Chhetri, Modupe Akanni</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">IB Wiki MVP Release</td><td><span class="status-pill">Planned</span></td><td>Noban Tahir, Seth Michael Reis</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">SMP Enhancements</td><td><span class="status-pill">Completed</span></td><td>Jake Patrick Pastoria</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">Product Ideation Tool</td><td><span class="status-pill">On Hold</span></td><td>Harsh Tripathi, Himanshu Bhoir</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">EDU Disclosures Tool</td><td><span class="status-pill">Completed</span></td><td>Genevieve Faye Will</td><td><span class="health-dot health-on-track">On Track</span></td></tr>
-            <tr><td class="wname">Training &amp; upskill platform - Strategy, approach &amp; Implementation</td><td><span class="status-pill">On Hold</span></td><td>&mdash;</td><td><span class="health-dot health-on-track">On Track</span></td></tr>
-            <tr><td class="wname">IB Wiki Beta</td><td><span class="status-pill">In Progress</span></td><td>Noban Tahir, Seth Michael Reis</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">IB Wiki Migrations for Alpha &ndash; Intranet requirement for AI COE (Asterix use cases) + Asterix Website</td><td><span class="status-pill">In UAT</span></td><td>Seth Michael Reis, Varunkumar Desai</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">Token &amp; Context Optimization Tools</td><td><span class="status-pill">Discovery</span></td><td>Denis Khoo, Ankit Chhetri, Harsh Tripathi</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">Story Quality Analysis (BAU)</td><td><span class="status-pill">Maintenance</span></td><td>Himanshu Bhoir, Jake Patrick Pastoria</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">ADK - Short term memory</td><td><span class="status-pill">On Hold</span></td><td>&mdash;</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">GDPR Compliance for Metrics Dashboard</td><td><span class="status-pill">On Hold</span></td><td>Jake Patrick Pastoria, Genevieve Faye Will</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">Autonomous Coding Agent v2 - Development</td><td><span class="status-pill">On Hold</span></td><td>Pradeep Singh Jaroliya, Minkai Yang</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">Autonomous Coding Agent v1 - Full Rollout</td><td><span class="status-pill">Proposed</span></td><td>Pradeep Singh Jaroliya</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">ADK - Context Hub</td><td><span class="status-pill">On Hold</span></td><td>Ankit Chhetri</td><td><span class="health-dot health-off-track">Off Track</span></td></tr>
-            <tr><td class="wname">Gemini Agent Ops POC</td><td><span class="status-pill">In Progress</span></td><td>Jake Patrick Pastoria, Pradeep Singh Jaroliya</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">Jira and Github Integration (Support Ignite) - Phase 1</td><td><span class="status-pill">In QA</span></td><td>Himanshu Bhoir</td><td><span class="health-dot health-on-track">On Track</span></td></tr>
-            <tr><td class="wname">Autonomous Coding Agent v2 - Pilot</td><td><span class="status-pill">On Hold</span></td><td>&mdash;</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">Autonomous Coding Agent v2 - Full Rollout</td><td><span class="status-pill">On Hold</span></td><td>&mdash;</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">Agent Ops (66 Degrees)</td><td><span class="status-pill">On Hold</span></td><td>Himanshu Bhoir, Ashley Lazarus</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">Expert Coding Hours</td><td><span class="status-pill">In Progress</span></td><td>Minkai Yang, Jake Patrick Pastoria</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">MCP HUB - Phase II (Intake &amp; Implementation)</td><td><span class="status-pill">Ready for Deployment</span></td><td>Pradeep Singh Jaroliya</td><td><span class="health-dot health-none">Not reported</span></td></tr>
-            <tr><td class="wname">Rebranding of SDLC Dashboards &amp; Correlation &amp; Trend Metrics Phase 2</td><td><span class="status-pill">Ready for Work</span></td><td>Himanshu Bhoir, Modupe Akanni, Varunkumar Desai, Ankit Chhetri</td><td><span class="health-dot health-on-track">On Track</span></td></tr>
+            <tr><td class="wname">Community Marketplace Enhancements and adoption &ndash; Phase 1</td><td><span class="status-pill status-progress">In Progress</span></td><td>Pranali Kadam, Modupe Akanni</td></tr>
+            <tr><td class="wname">AI Agents in QA - v1</td><td><span class="status-pill status-onhold">On Hold</span></td><td>Varunkumar Desai</td></tr>
+            <tr><td class="wname">Spec driven ADLC Workflow</td><td><span class="status-pill status-refinement">Refinement</span></td><td>Pranali Kadam, Varunkumar Desai</td></tr>
+            <tr><td class="wname">Code Reviewer Enhancements -v2</td><td><span class="status-pill status-maintenance">Maintenance</span></td><td>Minkai Yang, Noban Tahir</td></tr>
+            <tr><td class="wname">Autonomous Coding Agent v1 - Pilot</td><td><span class="status-pill status-progress">In Progress</span></td><td>Pradeep Singh Jaroliya</td></tr>
+            <tr><td class="wname">Git Trace - Tool Agnostic Metric adoption</td><td><span class="status-pill status-progress">In Progress</span></td><td>Ankit Chhetri, Modupe Akanni</td></tr>
+            <tr><td class="wname">IB Wiki MVP Release</td><td><span class="status-pill status-planned">Planned</span></td><td>Noban Tahir, Seth Michael Reis</td></tr>
+            <tr><td class="wname">SMP Enhancements</td><td><span class="status-pill status-completed">Completed</span></td><td>Jake Patrick Pastoria</td></tr>
+            <tr><td class="wname">Product Ideation Tool</td><td><span class="status-pill status-onhold">On Hold</span></td><td>Harsh Tripathi, Himanshu Bhoir</td></tr>
+            <tr><td class="wname">EDU Disclosures Tool</td><td><span class="status-pill status-completed">Completed</span></td><td>Genevieve Faye Will</td></tr>
+            <tr><td class="wname">Training &amp; upskill platform - Strategy, approach &amp; Implementation</td><td><span class="status-pill status-onhold">On Hold</span></td><td>&mdash;</td></tr>
+            <tr><td class="wname">IB Wiki Beta</td><td><span class="status-pill status-progress">In Progress</span></td><td>Noban Tahir, Seth Michael Reis</td></tr>
+            <tr><td class="wname">IB Wiki Migrations for Alpha &ndash; Intranet requirement for AI COE (Asterix use cases) + Asterix Website</td><td><span class="status-pill status-uat">In UAT</span></td><td>Seth Michael Reis, Varunkumar Desai</td></tr>
+            <tr><td class="wname">Token &amp; Context Optimization Tools</td><td><span class="status-pill status-discovery">Discovery</span></td><td>Denis Khoo, Ankit Chhetri, Harsh Tripathi</td></tr>
+            <tr><td class="wname">Story Quality Analysis (BAU)</td><td><span class="status-pill status-maintenance">Maintenance</span></td><td>Himanshu Bhoir, Jake Patrick Pastoria</td></tr>
+            <tr><td class="wname">ADK - Short term memory</td><td><span class="status-pill status-onhold">On Hold</span></td><td>&mdash;</td></tr>
+            <tr><td class="wname">GDPR Compliance for Metrics Dashboard</td><td><span class="status-pill status-onhold">On Hold</span></td><td>Jake Patrick Pastoria, Genevieve Faye Will</td></tr>
+            <tr><td class="wname">Autonomous Coding Agent v2 - Development</td><td><span class="status-pill status-onhold">On Hold</span></td><td>Pradeep Singh Jaroliya, Minkai Yang</td></tr>
+            <tr><td class="wname">Autonomous Coding Agent v1 - Full Rollout</td><td><span class="status-pill status-proposed">Proposed</span></td><td>Pradeep Singh Jaroliya</td></tr>
+            <tr><td class="wname">ADK - Context Hub</td><td><span class="status-pill status-onhold">On Hold</span></td><td>Ankit Chhetri</td></tr>
+            <tr><td class="wname">Gemini Agent Ops POC</td><td><span class="status-pill status-progress">In Progress</span></td><td>Jake Patrick Pastoria, Pradeep Singh Jaroliya</td></tr>
+            <tr><td class="wname">Jira and Github Integration (Support Ignite) - Phase 1</td><td><span class="status-pill status-qa">In QA</span></td><td>Himanshu Bhoir</td></tr>
+            <tr><td class="wname">Autonomous Coding Agent v2 - Pilot</td><td><span class="status-pill status-onhold">On Hold</span></td><td>&mdash;</td></tr>
+            <tr><td class="wname">Autonomous Coding Agent v2 - Full Rollout</td><td><span class="status-pill status-onhold">On Hold</span></td><td>&mdash;</td></tr>
+            <tr><td class="wname">Agent Ops (66 Degrees)</td><td><span class="status-pill status-onhold">On Hold</span></td><td>Himanshu Bhoir, Ashley Lazarus</td></tr>
+            <tr><td class="wname">Expert Coding Hours</td><td><span class="status-pill status-progress">In Progress</span></td><td>Minkai Yang, Jake Patrick Pastoria</td></tr>
+            <tr><td class="wname">MCP HUB - Phase II (Intake &amp; Implementation)</td><td><span class="status-pill status-ready-deploy">Ready for Deployment</span></td><td>Pradeep Singh Jaroliya</td></tr>
+            <tr><td class="wname">Rebranding of SDLC Dashboards &amp; Correlation &amp; Trend Metrics Phase 2</td><td><span class="status-pill status-ready-work">Ready for Work</span></td><td>Himanshu Bhoir, Modupe Akanni, Varunkumar Desai, Ankit Chhetri</td></tr>
           </tbody>
         </table>
       </div>
